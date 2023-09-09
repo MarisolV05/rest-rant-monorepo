@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
+const path = require("path")
 
 // Express Settings
 app.use(cors())
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
+app.use('/authentication', require('./controllers/authentication'))
 
 // Listen for Connections
 app.listen(process.env.PORT, () => {
