@@ -51,13 +51,14 @@ function PlaceDetails() {
 		const response = await fetch(`http://localhost:5001/places/${place.placeId}/comments`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${localStorage.getItem('token')}`
 			},
 			body: JSON.stringify(commentAttributes)
 		})
-
+	
 		const comment = await response.json()
-
+	
 		setPlace({
 			...place,
 			comments: [
@@ -65,10 +66,8 @@ function PlaceDetails() {
 				comment
 			]
 		})
-
+	
 	}
-
-
 
 	let comments = (
 		<h3 className="inactive">
